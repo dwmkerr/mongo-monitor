@@ -1,0 +1,27 @@
+{
+  "name": "mongo-monitor",
+  "version": "0.1.0",
+  "description": "MongoDB Cluster Monitor",
+  "main": "monitor.js",
+  "engines": {
+    "node": ">= 8.5.0"
+  },
+  "bin": {
+    "mongo-monitor": "./bin/monitor.js"
+  },
+  "scripts": {
+    "start": "node ./bin/monitor.js",
+    "debug": "node --inspect-brk ./bin/monitor.js",
+    "test": "mocha ."
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "chalk": "^2.3.1",
+    "commander": "^2.14.1",
+    "mongodb": "^3.0.3"
+  },
+  "devDependencies": {
+    "eslint": "^4.18.1"
+  }
+}
