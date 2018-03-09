@@ -1,5 +1,7 @@
 # mongo-monitor
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/dwmkerr/mongo-monitor.svg)](https://greenkeeper.io/)
+
 Simple CLI to monitor the status of a MongoDB cluster.
 
 ```bash
