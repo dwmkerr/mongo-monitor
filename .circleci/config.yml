@@ -19,8 +19,8 @@ jobs:
           name: lint
           command: npm run lint
       - run:
-          name: test-coverage
-          command: npm run coverage
+          name: test
+          command: npm run test:ci
       - store_artifacts:
           path: ./artifacts
           prefix: artifacts
