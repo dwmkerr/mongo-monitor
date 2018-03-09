@@ -1,0 +1,11 @@
+{
+  "ismaster": true,
+  "msg": "isdbgrid",
+  "maxBsonObjectSize": 16777216,
+  "maxMessageSizeBytes": 48000000,
+  "maxWriteBatchSize": 1000,
+  "localTime": "2018-03-01T04:13:18.825Z",
+  "maxWireVersion": 5,
+  "minWireVersion": 0,
+  "ok": 1
+}

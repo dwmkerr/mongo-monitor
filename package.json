@@ -7,14 +7,20 @@
     "node": ">= 8.5.0"
   },
   "bin": {
-    "mongo-monitor": "./bin/monitor.js"
+    "mongo-monitor": "./bin/mongo-monitor.js"
   },
   "scripts": {
     "start": "node ./bin/monitor.js",
     "debug": "node --inspect-brk ./bin/monitor.js",
-    "test": "mocha ."
+    "lint": "eslint --ignore-path .gitignore .",
+    "test": "mocha 'src/**/*.spec.js'",
+    "test:debug": "mocha --inspect-brk --watch 'src/**/*.spec.js'",
+    "test:coverage": "nyc  --reporter=html --report-dir=./artifacts/coverage _mocha 'src/**/*.spec.js'",
+    "test:ci": "nyc _mocha --reporter mocha-junit-reporter --reporter-options mochaFile=./artifacts/tests/test-report.xml 'src/**/*.spec.js'",
+    "release": "npm lint && npm test && standard-version",
+    "preversion": "echo 'Version with \"npm run release\"' && exit 1"
   },
-  "author": "",
+  "author": "Dave Kerr <github.com/dwmkerr>",
   "license": "ISC",
   "dependencies": {
     "chalk": "^2.3.1",
@@ -22,6 +28,11 @@
     "mongodb": "^3.0.3"
   },
   "devDependencies": {
-    "eslint": "^4.18.1"
+    "eslint": "^4.18.1",
+    "mocha": "^5.0.1",
+    "mocha-junit-reporter": "^1.17.0",
+    "nock": "^9.2.3",
+    "nyc": "^11.4.1",
+    "sinon": "^4.4.2"
   }
 }

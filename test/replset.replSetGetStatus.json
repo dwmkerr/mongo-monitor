@@ -1,0 +1,87 @@
+{
+  "set": "replset",
+  "date": "2018-03-04T12:43:20.135Z",
+  "myState": 1,
+  "term": 5,
+  "heartbeatIntervalMillis": 2000,
+  "optimes": {
+    "lastCommittedOpTime": {
+      "ts": "6529069263150383105",
+      "t": 5
+    },
+    "appliedOpTime": {
+      "ts": "6529069263150383105",
+      "t": 5
+    },
+    "durableOpTime": {
+      "ts": "6529069263150383105",
+      "t": 5
+    }
+  },
+  "members": [
+    {
+      "_id": 1,
+      "name": "mongo1.mongo-cluster.com:27017",
+      "health": 1,
+      "state": 1,
+      "stateStr": "PRIMARY",
+      "uptime": 190139,
+      "optime": {
+        "ts": "6529069263150383105",
+        "t": 5
+      },
+      "optimeDate": "2018-03-04T12:43:19.000Z",
+      "electionTime": "6528258008252678145",
+      "electionDate": "2018-03-02T08:15:14.000Z",
+      "configVersion": 2,
+      "self": true
+    },
+    {
+      "_id": 2,
+      "name": "mongo2.mongo-cluster.com:27017",
+      "health": 1,
+      "state": 2,
+      "stateStr": "SECONDARY",
+      "uptime": 188827,
+      "optime": {
+        "ts": "6529069220200710145",
+        "t": 5
+      },
+      "optimeDurable": {
+        "ts": "6529069220200710145",
+        "t": 5
+      },
+      "optimeDate": "2018-03-04T12:43:09.000Z",
+      "optimeDurableDate": "2018-03-04T12:43:09.000Z",
+      "lastHeartbeat": "2018-03-04T12:43:18.820Z",
+      "lastHeartbeatRecv": "2018-03-04T12:43:19.218Z",
+      "pingMs": 0,
+      "syncingTo": "mongo3.mongo-cluster.com:27017",
+      "configVersion": 2
+    },
+    {
+      "_id": 3,
+      "name": "mongo3.mongo-cluster.com:27017",
+      "health": 1,
+      "state": 2,
+      "stateStr": "SECONDARY",
+      "uptime": 190137,
+      "optime": {
+        "ts": "6529069220200710145",
+        "t": 5
+      },
+      "optimeDurable": {
+        "ts": "6529069220200710145",
+        "t": 5
+      },
+      "optimeDate": "2018-03-04T12:43:09.000Z",
+      "optimeDurableDate": "2018-03-04T12:43:09.000Z",
+      "lastHeartbeat": "2018-03-04T12:43:18.820Z",
+      "lastHeartbeatRecv": "2018-03-04T12:43:18.248Z",
+      "pingMs": 0,
+      "syncingTo": "mongo1.mongo-cluster.com:27017",
+      "configVersion": 2
+    }
+  ],
+  "ok": 1
+}

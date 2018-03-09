@@ -1,0 +1,20 @@
+{
+  "shards": [
+    {
+      "_id": "shard1",
+      "host": "shard1/mongod1.shard1.mongo-cluster.com:27017,mongod2.shard1.mongo-cluster.com:27017,mongod3.shard1.mongo-cluster.com:27017",
+      "state": 1
+    },
+    {
+      "_id": "shard2",
+      "host": "shard2/mongod1.shard2.mongo-cluster.com:27017,mongod2.shard2.mongo-cluster.com:27017,mongod3.shard3.mongo-cluster.com:27017",
+      "state": 1
+    },
+    {
+      "_id": "shard3.mongo-cluster.com",
+      "host": "shard3/mongod1.shard3.mongo-cluster.com:27017,mongod2.shard3.mongo-cluster.com:27017,mongod3.shard3.mongo-cluster.com:27017",
+      "state": 1
+    }
+  ],
+  "ok": 1
+}

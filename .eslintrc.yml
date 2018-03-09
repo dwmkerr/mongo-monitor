@@ -1,7 +1,11 @@
+extends:
+  eslint:recommended
 env:
   es6: true
   node: true
-extends: 'eslint:recommended'
+  mocha: true
+parserOptions:
+  ecmaVersion: 8
 rules:
   indent:
     - error

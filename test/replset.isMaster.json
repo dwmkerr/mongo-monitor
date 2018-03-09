@@ -1,0 +1,28 @@
+{
+  "hosts": [
+    "mongo1.mongo-cluster.com:27017",
+    "mongo2.mongo-cluster.com:27017"
+  ],
+  "setName": "replset",
+  "setVersion": 1,
+  "ismaster": true,
+  "secondary": false,
+  "primary": "mongo1.mongo-cluster.com:27017",
+  "me": "mongo1.mongo-cluster.com:27017",
+  "electionId": "7fffffff0000000000000001",
+  "lastWrite": {
+    "opTime": {
+      "ts": "6527928717405061121",
+      "t": 1
+    },
+    "lastWriteDate": "2018-03-01T10:57:25.000Z"
+  },
+  "maxBsonObjectSize": 16777216,
+  "maxMessageSizeBytes": 48000000,
+  "maxWriteBatchSize": 1000,
+  "localTime": "2018-03-01T10:57:30.378Z",
+  "maxWireVersion": 5,
+  "minWireVersion": 0,
+  "readOnly": false,
+  "ok": 1
+}

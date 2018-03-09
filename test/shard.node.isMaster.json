@@ -1,0 +1,33 @@
+{
+  "hosts": [
+    "mongod1.shard1.mongo-cluster.com:27017",
+    "mongod2.shard1.mongo-cluster.com:27017",
+    "mongod3.shard1.mongo-cluster.com:27017"
+  ],
+  "setName": "shard1replset",
+  "setVersion": 1,
+  "ismaster": true,
+  "secondary": false,
+  "primary": "mongod1.shard1.mongo-cluster.com:27017",
+  "me": "mongod1.mongo-cluster.com:27017",
+  "electionId": "7fffffff0000000000000001",
+  "lastWrite": {
+    "opTime": {
+      "ts": "6527823546540883969",
+      "t": 1
+    },
+    "lastWriteDate": "2018-03-01T04:09:18.000Z"
+  },
+  "maxBsonObjectSize": 16777216,
+  "maxMessageSizeBytes": 48000000,
+  "maxWriteBatchSize": 1000,
+  "localTime": "2018-03-01T04:09:18.568Z",
+  "maxWireVersion": 5,
+  "minWireVersion": 0,
+  "readOnly": false,
+  "ok": 1,
+  "$gleStats": {
+    "lastOpTime": "0",
+    "electionId": "7fffffff0000000000000001"
+  }
+}
