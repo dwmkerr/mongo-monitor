@@ -26,3 +26,6 @@ jobs:
           prefix: artifacts
       - store_test_results:
           path: ./artifacts/tests
+      - run:
+          name: upload-coverage
+          command: bash <(curl -s https://codecov.io/bash)
