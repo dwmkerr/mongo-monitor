@@ -24,3 +24,5 @@ jobs:
       - store_artifacts:
           path: ./artifacts
           prefix: artifacts
+      - store_test_results:
+          path: ./artifacts/tests

@@ -15,8 +15,8 @@
     "lint": "eslint --ignore-path .gitignore .",
     "test": "mocha 'src/**/*.spec.js'",
     "test:debug": "mocha --inspect-brk --watch 'src/**/*.spec.js'",
-    "test:coverage": "nyc  --reporter=html --report-dir=./artifacts/coverage _mocha 'src/**/*.spec.js'",
-    "test:ci": "nyc _mocha --reporter mocha-junit-reporter --reporter-options mochaFile=./artifacts/tests/test-report.xml 'src/**/*.spec.js'",
+    "test:coverage": "nyc --reporter=html --report-dir=./artifacts/coverage _mocha 'src/**/*.spec.js'",
+    "test:ci": "nyc --reporter=html --report-dir=./artifacts/coverage _mocha --reporter mocha-junit-reporter --reporter-options mochaFile=./artifacts/tests/test-report.xml 'src/**/*.spec.js'",
     "release": "npm lint && npm test && standard-version",
     "preversion": "echo 'Version with \"npm run release\"' && exit 1"
   },
