@@ -33,20 +33,3 @@ The following files are useful for testing:
 | `shard.isMaster.json` | The output of `isMaster` for a `mongos` member of a sharded cluster. | 
 | `shard.listShards.json` | The output of `listShards` for a `mongos` member of a sharded cluster. | 
 | `shard.node.isMaster.json` | The output of `isMaster` for a `mongod` member of a sharded cluster. | 
-
-## TODO
-
-- ci
-- release
-- coverage / tests
-- sanitise
-- show an activity log (joined/left etc)
-- create new seed from this project
-- show load balancer status
-- use sh.status rather than listShards, so that we get the load balancer status
-
-Command line options and env vars for:
-- User
-- password
-- db
-- command line - urlencode the username/password
