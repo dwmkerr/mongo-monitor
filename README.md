@@ -2,6 +2,8 @@
 
 [![CircleCI](https://circleci.com/gh/dwmkerr/mongo-monitor.svg?style=shield)](https://circleci.com/gh/dwmkerr/mongo-monitor)
 
+[![codecov](https://codecov.io/gh/dwmkerr/mongo-monitor/branch/master/graph/badge.svg)](https://codecov.io/gh/dwmkerr/mongo-monitor)
+
 Simple CLI to monitor the status of a MongoDB cluster.
 
 ```bash
