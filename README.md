@@ -7,24 +7,22 @@
 Simple CLI to monitor the status of a MongoDB cluster.
 
 ```bash
-mongo-monitor mongodb://localhost:27017
+mongo-monitor mongodb://address:27017
 ```
+
+![Replicaset Screenshot](./docs/screenshot-replset.png)
 
 ## Usage
 
 The monitor is primary designed to show the status of a MongoDB cluster, updated real-time. This is useful when performing administrative operations such as replicaset or shard configuration.
 
-On a sharded cluster, if you provide a connection string with admin priviledges to any `mongos` host, you will see the sharding configuration:
-
-![TODO: Add sharing screenshot]()
+On a sharded cluster, if you provide a connection string with admin priviledges to any `mongos` host, you will see the sharding configuration.
 
 On a replicaset, if you provide a connection string with admin priviledges to any host, or to the entire set, you will see the replicaset configuration:
 
-![TODO: Add replicaset screenshot]()
+![Replicaset Screenshot](./docs/screenshot-replset.png)
 
-For a standalone, basic info is reported:
-
-![TODO: Add standalone screenshot]()
+For a standalone, basic info is reported.
 
 ## Tests
 
