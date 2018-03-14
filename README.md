@@ -1,8 +1,6 @@
 # mongo-monitor
 
-[![CircleCI](https://circleci.com/gh/dwmkerr/mongo-monitor.svg?style=shield)](https://circleci.com/gh/dwmkerr/mongo-monitor)
-
-[![codecov](https://codecov.io/gh/dwmkerr/mongo-monitor/branch/master/graph/badge.svg)](https://codecov.io/gh/dwmkerr/mongo-monitor)
+[![CircleCI](https://circleci.com/gh/dwmkerr/mongo-monitor.svg?style=shield)](https://circleci.com/gh/dwmkerr/mongo-monitor) [![codecov](https://codecov.io/gh/dwmkerr/mongo-monitor/branch/master/graph/badge.svg)](https://codecov.io/gh/dwmkerr/mongo-monitor)
 
 Simple CLI to monitor the status of a MongoDB cluster.
 
@@ -13,6 +11,14 @@ mongo-monitor mongodb://address:27017
 ![Replicaset Screenshot](./docs/screenshot-replset.png)
 
 The connection string is handled with [github.com/dwmkerr/mongo-connection-string](`https://github.com/dwmkerr/mongo-connection-string`), which means it'll handle input which is not URI encoded.
+
+Install with:
+
+```bash
+npm install mongo-monitor-cli
+```
+
+I am hoping to publish at some stage with the more friendly `mongo-monitor` cli.
 
 ## Usage
 
