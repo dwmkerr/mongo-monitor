@@ -51,7 +51,7 @@ async function checkStatus(params) {
 
   //  Get the cluster status.
   try {
-    const status = await loadStatus(connectionString);
+    const status = await loadStatus(connectionString.toURI());
 
     process.stdout.write('\x1Bc');
     console.log(`Time          : ${chalk.white(new Date().toISOString())}`);

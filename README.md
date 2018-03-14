@@ -12,6 +12,8 @@ mongo-monitor mongodb://address:27017
 
 ![Replicaset Screenshot](./docs/screenshot-replset.png)
 
+The connection string is handled with [github.com/dwmkerr/mongo-connection-string](`https://github.com/dwmkerr/mongo-connection-string`), which means it'll handle input which is not URI encoded.
+
 ## Usage
 
 The monitor is primary designed to show the status of a MongoDB cluster, updated real-time. This is useful when performing administrative operations such as replicaset or shard configuration.
