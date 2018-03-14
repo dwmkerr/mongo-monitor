@@ -1,6 +1,7 @@
 #! /usr/bin/env node
 const program = require('commander');
 const chalk = require('chalk');
+const { ConnectionString } = require('mongo-connection-string');
 const pkg = require('../package.json');
 const monitor = require('../src/mongo-monitor');
 
@@ -21,10 +22,12 @@ if (!connectionString) {
   process.exit(0);
 }
 
+//  Parse the connection string into a ConnectionString object.
+const connStr = new ConnectionString(connectionString);
 
-console.log(`Connecting to: ${connectionString}`);
+console.log(`Connecting to: ${connStr}`);
 
-monitor({ connectionString, interval })
+monitor({ connectionString: connStr, interval })
   .catch((err) => {
     console.log(chalk.red(`An error occured: ${err.message}`));
     process.exit(1);

@@ -1,10 +1,6 @@
 
 ## TODO
 
-- ci
-- release
-- coverage / tests
-- sanitise
 - show an activity log (joined/left etc)
 - create new seed from this project
 - show load balancer status
@@ -14,4 +10,3 @@ Command line options and env vars for:
 - User
 - password
 - db
-- command line - urlencode the username/password
