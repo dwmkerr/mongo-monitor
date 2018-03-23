@@ -6,9 +6,6 @@ jobs:
       - image: circleci/node:8.5
     steps:
       - checkout
-      - run:
-          name: update-npm
-          command: 'sudo npm install -g npm@latest'
       - restore_cache:
           key: dependency-cache-{{ checksum "package.json" }}
       - run:
@@ -22,8 +19,13 @@ jobs:
           name: lint
           command: npm run lint
       - run:
-          name: test-coverage
-          command: npm run coverage
+          name: test
+          command: npm run test:ci
       - store_artifacts:
           path: ./artifacts
           prefix: artifacts
+      - store_test_results:
+          path: ./artifacts/tests
+      - run:
+          name: upload-coverage
+          command: bash <(curl -s https://codecov.io/bash)

@@ -1,6 +1,6 @@
 {
-  "name": "mongo-monitor",
-  "version": "0.1.0",
+  "name": "mongo-monitor-cli",
+  "version": "0.2.0",
   "description": "MongoDB Cluster Monitor",
   "main": "monitor.js",
   "engines": {
@@ -15,16 +15,21 @@
     "lint": "eslint --ignore-path .gitignore .",
     "test": "mocha 'src/**/*.spec.js'",
     "test:debug": "mocha --inspect-brk --watch 'src/**/*.spec.js'",
-    "test:coverage": "nyc  --reporter=html --report-dir=./artifacts/coverage _mocha 'src/**/*.spec.js'",
-    "test:ci": "nyc _mocha --reporter mocha-junit-reporter --reporter-options mochaFile=./artifacts/tests/test-report.xml 'src/**/*.spec.js'",
-    "release": "npm lint && npm test && standard-version",
+    "test:coverage": "nyc --reporter=html --report-dir=./artifacts/coverage _mocha 'src/**/*.spec.js'",
+    "test:ci": "nyc --reporter=lcov --reporter=html --report-dir=./artifacts/coverage _mocha --reporter mocha-junit-reporter --reporter-options mochaFile=./artifacts/tests/test-report.xml 'src/**/*.spec.js'",
+    "release": "npm run lint && npm test && standard-version",
     "preversion": "echo 'Version with \"npm run release\"' && exit 1"
   },
   "author": "Dave Kerr <github.com/dwmkerr>",
   "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dwmkerr/mongo-monitor.git"
+  },
   "dependencies": {
     "chalk": "^2.3.1",
     "commander": "^2.14.1",
+    "mongo-connection-string": "^0.1.3",
     "mongodb": "^3.0.3"
   },
   "devDependencies": {
@@ -33,6 +38,7 @@
     "mocha-junit-reporter": "^1.17.0",
     "nock": "^9.2.3",
     "nyc": "^11.4.1",
-    "sinon": "^4.4.2"
+    "sinon": "^4.4.2",
+    "standard-version": "^4.3.0"
   }
 }
