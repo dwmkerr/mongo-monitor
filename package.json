@@ -10,8 +10,8 @@
     "mongo-monitor": "./bin/mongo-monitor.js"
   },
   "scripts": {
-    "start": "node ./bin/monitor.js",
-    "debug": "node --inspect-brk ./bin/monitor.js",
+    "start": "node ./bin/mongo-monitor.js",
+    "debug": "node --inspect-brk ./bin/mongo-monitor.js",
     "lint": "eslint --ignore-path .gitignore .",
     "test": "mocha 'src/**/*.spec.js'",
     "test:debug": "mocha --inspect-brk --watch 'src/**/*.spec.js'",

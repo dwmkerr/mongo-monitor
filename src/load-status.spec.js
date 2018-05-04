@@ -95,6 +95,7 @@ describe('load-status', () => {
     expect(status.shards.length).to.equal(3);
     const shard1 = status.shards[0];
     expect(shard1.id).to.equal('shard1');
+    expect(shard1.replicaSet).to.equal('shard1rs');
     expect(shard1.hosts.length).to.equal(3);
     const host1 = shard1.hosts[0];
     expect(host1.status).to.equal('PRIMARY');

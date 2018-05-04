@@ -17,12 +17,23 @@ async function loadShardedStatus({ db }) {
   //  Go through each shard, getting status. This'll be async for each one.
   const promises = listShards.shards.map(async (shard) => {
     //  Get the shard id and hosts.
-    const { id, hosts } = getShardHosts(shard.host);
+    const { replicaSet, hosts } = getShardHosts(shard.host);
 
     //  Try and get the details of the replicaset which make up the shard.
     try {
       const isMaster = await getIsMaster(`mongodb://${hosts[0]}`);
       const primary = isMaster.primary;
+
+      //  If there is no set name, we're standalone.
+      if (isMaster.setName === undefined) {
+        return {
+          id: shard._id,
+          replicaSet,
+          hosts: hosts.map(host => ({ status: '(standalone)', host }))
+        };
+      }
+
+      //  Otherwise, work out the status.
       const shardHosts = isMaster.hosts.map((host) => {
         return {
           status: (host === primary ? 'PRIMARY' : 'SECONDARY'),
@@ -30,7 +41,7 @@ async function loadShardedStatus({ db }) {
         };
       });
 
-      return { id, hosts: shardHosts };
+      return { id: shard._id, replicaSet, hosts: shardHosts };
     } catch (err) {
       const shardHosts = hosts.map((host) => {
         return {
@@ -38,7 +49,7 @@ async function loadShardedStatus({ db }) {
           host
         };
       });
-      return { id, hosts: shardHosts };
+      return { id: shard._id, replicaSet, hosts: shardHosts };
     }
   });
 
