@@ -15,6 +15,7 @@ fi
 mkdir -p ./data/data1
 mkdir -p ./data/data2
 mkdir -p ./data/data3
+mkdir -p ./log
 
 # Start the replicaset processes.
 mongod --fork --logpath ./log/node1.log --smallfiles --oplogSize 50 --port ${port1} --dbpath ./data/data1 --replSet cluster
@@ -43,7 +44,7 @@ EOF
 
 # Show the process info.
 echo
-echo "Standalone MongoDB Running on ${port}"
+echo "Replicaset MongoDB Running"
 echo
 echo "Monitor with: "
 echo "  mongo-monitor localhost:${port1},localhost:${port2},localhost:${port3}?replicaSet=cluster"

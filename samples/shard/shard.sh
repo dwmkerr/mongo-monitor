@@ -116,7 +116,7 @@ EOF
 
 # Show the process info.
 echo
-echo "Standalone MongoDB Running on ${port}"
+echo "Sharded MongoDB Cluster Running"
 echo
 echo "Monitor with: "
 echo "  mongo-monitor localhost"
