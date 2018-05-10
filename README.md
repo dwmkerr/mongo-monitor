@@ -18,8 +18,6 @@ Install with:
 npm install mongo-monitor-cli
 ```
 
-I am hoping to publish at some stage with the more friendly `mongo-monitor` cli.
-
 ## Usage
 
 The monitor is primary designed to show the status of a MongoDB cluster, updated real-time. This is useful when performing administrative operations such as replicaset or shard configuration.
@@ -31,6 +29,38 @@ On a replicaset, if you provide a connection string with admin priviledges to an
 ![Replicaset Screenshot](./docs/screenshot-replset.png)
 
 For a standalone, basic info is reported.
+
+## Samples
+
+To try the monitor out, there are a few samples you can try.
+
+Monitor a standalone instance:
+
+```bash
+make sample-standalone
+mongo-monitor localhost:271017
+```
+
+Monitor a replicaset:
+
+```bash
+make sample-replicaset
+mongo-monitor localhost:27017,localhost:27018,localhost:27019?replicaSet=cluster
+```
+
+Monitor a sharded cluster:
+
+```bash
+make sample-shard
+mongo-monitor localhost
+```
+
+Cleanup sample processes:
+
+```bash
+make sample-shutdown
+```
+
 
 ## Tests
 

@@ -1,3 +1,11 @@
 node_modules/
 .nyc_output
 artifacts/
+
+# Sample datafiles
+samples/standalone/log
+samples/standalone/data
+samples/replicaset/log
+samples/replicaset/data*
+samples/shard/data*
+samples/shard/log
