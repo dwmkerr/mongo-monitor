@@ -79,9 +79,8 @@ async function loadStandaloneStatus() {
   };
 }
 
-async function loadStatus(connectionString) {
+async function loadStatus(client) {
   //  Connect, switch to admin, get the status.
-  const client = await MongoClient.connect(connectionString);
   const db = client.db('admin');
   const isMaster = await db.command({ isMaster: 1 });
 
@@ -95,9 +94,6 @@ async function loadStatus(connectionString) {
   } else {
     status = await loadStandaloneStatus({ isMaster, db });
   }
-
-  //  Clean up the client connections.
-  await client.close();
 
   return status;
 }
