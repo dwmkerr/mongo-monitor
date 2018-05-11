@@ -4,7 +4,7 @@
 const eventHandlers = {
 
   // timeout: () => {
-    // return 'timeout';
+  // return 'timeout';
   // },
 
   close: () => {
@@ -16,19 +16,19 @@ const eventHandlers = {
   },
 
   // serverDescriptionChanged: () => {
-    // return 'serverDescriptionChanged';
+  // return 'serverDescriptionChanged';
   // },
 
   // serverHeartbeatStarted: () => {
-    // return 'serverHeartbeatStarted';
+  // return 'serverHeartbeatStarted';
   // },
 
   // serverHeartbeatSucceeded: () => {
-    // return 'serverHeartbeatSuceeded';
+  // return 'serverHeartbeatSuceeded';
   // },
 
   // serverHeartbeatFailed: () => {
-    // return 'serverHeartbeatFailed';
+  // return 'serverHeartbeatFailed';
   // },
 
   serverClosed: () => {
@@ -44,7 +44,7 @@ const eventHandlers = {
   },
 
   // topologyDescriptionChanged: () => {
-    // return 'topologyDescriptionChanged';
+  // return 'topologyDescriptionChanged';
   // },
 
   joined: () => {
@@ -56,19 +56,19 @@ const eventHandlers = {
   },
 
   // ping: () => {
-    // return 'ping';
+  // return 'ping';
   // },
 
   // ha: () => {
-    // return 'ha';
+  // return 'ha';
   // },
 
   // all: () => {
-    // return 'all';
+  // return 'all';
   // },
 
   // fullsetup: () => {
-    // return 'timeout';
+  // return 'timeout';
   // },
 
 };
