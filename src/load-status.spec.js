@@ -102,7 +102,6 @@ describe('load-status', () => {
     expect(shard1.replicaSet).to.equal('shard1rs');
     expect(shard1.hosts.length).to.equal(3);
     const host1 = shard1.hosts[0];
-    debugger;
     expect(host1.status).to.equal('PRIMARY');
     expect(host1.host).to.equal('mongod1.shard1.mongo-cluster.com:27017');
   });
