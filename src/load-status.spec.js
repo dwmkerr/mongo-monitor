@@ -20,22 +20,26 @@ describe('load-status', () => {
     //  Any call to 'connect' returns one of our stubbed dbs,
     sandbox.stub(MongoClient, 'connect')
       .callsFake(async (connectionString) => {
-        return {
-          db: () => {
-            if (!stubbedDbs[connectionString]) {
-              //  TODO for some reason in the tests this does not bomb the runner...
-              throw new Error(`DB with connection string '${connectionString}' has not been stubbed`);
-            }
-            return stubbedDbs[connectionString];
-          },
-          close: () => {}
-        };
+        return stubClient(connectionString);
       });
   });
 
   afterEach(() => {
     sandbox.restore();
   });
+
+  const stubClient = (connectionString) => {
+    return {
+      db: () => {
+        if (!stubbedDbs[connectionString]) {
+          //  TODO for some reason in the tests this does not bomb the runner...
+          throw new Error(`DB with connection string '${connectionString}' has not been stubbed`);
+        }
+        return stubbedDbs[connectionString];
+      },
+      close: () => {}
+    };
+  };
 
   const stubDb = (connectionString) => {
     const stubbedDb = {
@@ -54,7 +58,7 @@ describe('load-status', () => {
       .callsFake(async () => { return testReplsetReplSetGetStatus; });
 
     //  Load the status.
-    const status = await loadStatus('localhost');
+    const status = await loadStatus(stubClient('localhost'));
 
     //  Assert the expected shape.
     expect(status.configuration).to.equal('replicaset');
@@ -88,7 +92,7 @@ describe('load-status', () => {
       .callsFake(async () => { return testShardNodeIsMaster; });
 
     //  Load the status.
-    const status = await loadStatus('localhost');
+    const status = await loadStatus(stubClient('localhost'));
 
     //  Assert the expected shape.
     expect(status.configuration).to.equal('sharded');

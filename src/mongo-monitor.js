@@ -1,39 +1,14 @@
+const { MongoClient } = require('mongodb');
 const chalk = require('chalk');
-const longestString = require('./lib/longest-string');
 const loadStatus = require('./load-status');
-
-const stateMap = [
-  { code: 0, name: 'STARTUP', colour: 'yellow' },
-  { code: 1, name: 'PRIMARY', colour: 'green' },
-  { code: 2, name: 'SECONDARY', colour: 'blue' },
-  { code: 3, name: 'RECOVERING', colour: 'yellow' },
-  { code: 5, name: 'STARTUP', colour: 'yellow' },
-  { code: 6, name: 'UNKNOWN', colour: 'red' },
-  { code: 7, name: 'ARBITER', colour: 'magenta' },
-  { code: 8, name: 'DOWN', colour: 'red' },
-  { code: 9, name: 'ROLLBACK', colour: 'yellow' },
-  { code: 10, name: 'REMOVED', colour: 'red' }
-];
+const state = require('./lib/status');
+const eventHandlers = require('./lib/event-handlers');
 
 //  Keep track of interesting events.
 const events = [];
 
-function getStatusName(stateCode) {
-  const state = stateMap.find(sm => sm.code === stateCode);
-  if (!state) return 'UNKNOWN';
-  return state.name;
-}
-
-function writeStatusName(statusName, padLeft = 0) {
-  const state = stateMap.find(sm => sm.name === statusName);
-  if (!state) return chalk.red('unknown');
-  return chalk[state.colour](state.name.padStart(padLeft));
-}
-
-function writeStatusNameRightAligned(statusName) {
-  const l = longestString(stateMap.map(s => s.name));
-  return writeStatusName(statusName, l);
-}
+//  Our single mongo client, which we might take few attempts to establish.
+let client = null;
 
 function printEvents() {
   //  Finally, write out recent events.
@@ -51,7 +26,19 @@ async function checkStatus(params) {
 
   //  Get the cluster status.
   try {
-    const status = await loadStatus(connectionString.toURI());
+    //  If we don't yet have a client, try and create one. Connection issues
+    //  might cause this to fail.
+    if (client === null) {
+      client = await MongoClient.connect(connectionString.toURI());
+
+      Object.keys(eventHandlers).forEach((eventName) => {
+        client.topology.on(eventName, (e) => {
+          const message = eventHandlers[eventName](e);
+          events.push({ time: new Date(), message });
+        });
+      });
+    }
+    const status = await loadStatus(client);
 
     process.stdout.write('\x1Bc');
     console.log(`Time          : ${chalk.white(new Date().toISOString())}`);
@@ -63,7 +50,7 @@ async function checkStatus(params) {
       status.shards.forEach((shard) => {
         console.log(`\n  Shard: ${chalk.white(shard.id)}\n`);
         shard.hosts.forEach((host) => {
-          console.log(`    ${writeStatusNameRightAligned(host.status)} : ${chalk.white(host.host)}`);
+          console.log(`    ${state.writeStatusNameRightAligned(host.status)} : ${chalk.white(host.host)}`);
         });
       });
     }
@@ -72,7 +59,7 @@ async function checkStatus(params) {
     if (status.configuration === 'replicaset') {
       console.log(`\n  Replicaset: ${chalk.white(status.replsetName)}\n`);
       status.members.forEach((m) => {
-        console.log(`    ${writeStatusNameRightAligned(getStatusName(m.state))} : ${chalk.white(m.name)}`);
+        console.log(`    ${state.writeStatusNameRightAligned(state.getStatusName(m.state))} : ${chalk.white(m.name)}`);
       });
     }
 

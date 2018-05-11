@@ -17,6 +17,7 @@
     "test:debug": "mocha --inspect-brk --watch 'src/**/*.spec.js'",
     "test:coverage": "nyc --reporter=html --report-dir=./artifacts/coverage _mocha 'src/**/*.spec.js'",
     "test:ci": "nyc --reporter=lcov --reporter=html --report-dir=./artifacts/coverage _mocha --reporter mocha-junit-reporter --reporter-options mochaFile=./artifacts/tests/test-report.xml 'src/**/*.spec.js'",
+    "test:watch": "mocha --watch 'src/**/*.spec.js'",
     "release": "npm run lint && npm test && standard-version",
     "preversion": "echo 'Version with \"npm run release\"' && exit 1"
   },
