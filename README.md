@@ -10,7 +10,7 @@ mongo-monitor mongodb://address:27017
 
 ![Replicaset Screenshot](./docs/overview.gif)
 
-The connection string is handled with [github.com/dwmkerr/mongo-connection-string](`https://github.com/dwmkerr/mongo-connection-string`), which means it'll handle input which is not URI encoded.
+The connection string is handled with [`mongo-connection-string`](https://github.com/dwmkerr/mongo-connection-string), which means it'll handle input which is not URI encoded.
 
 Install with:
 
@@ -26,9 +26,11 @@ On a sharded cluster, if you provide a connection string with admin priviledges 
 
 On a replicaset, if you provide a connection string with admin priviledges to any host, or to the entire set, you will see the replicaset configuration:
 
-![Replicaset Screenshot](./docs/screenshot-replset.png)
+![Replicaset Screenshot](./docs/replicaset.jpg)
 
-For a standalone, basic info is reported.
+For a standalone, basic info is reported. Sharded clusters show details of the shards, as welll as the replicasets which make up each shard:
+
+![Sharded Cluster Screenshot](./docs/sharded-cluster.jpg)
 
 ## Samples
 
