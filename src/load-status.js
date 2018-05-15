@@ -36,7 +36,7 @@ async function loadShardedStatus({ db }) {
 
       //  Otherwise, work out the status.
       const shardHosts = rsStatus.members.map((host) => {
-      return {
+        return {
           state: host.state,
           host: host.name
         };

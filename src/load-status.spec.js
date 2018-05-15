@@ -6,7 +6,6 @@ const testReplsetIsMaster = require('../test/replset.isMaster.json');
 const testReplsetReplSetGetStatus = require('../test/replset.replSetGetStatus.json');
 const testShardIsMaster = require('../test/shard.isMaster.json');
 const testShardListShards = require('../test/shard.listShards.json');
-const testShardNodeIsMaster = require('../test/shard.node.isMaster.json');
 const testShardReplSetGetStatus = require('../test/shard.replSet.replSetGetStatus.json');
 
 const noop = () => {};
