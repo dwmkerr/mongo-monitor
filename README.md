@@ -8,7 +8,7 @@ Simple CLI to monitor the status of a MongoDB cluster.
 mongo-monitor mongodb://address:27017
 ```
 
-![Replicaset Screenshot](./docs/screenshot-replset.png)
+![Replicaset Screenshot](./docs/overview.gif)
 
 The connection string is handled with [github.com/dwmkerr/mongo-connection-string](`https://github.com/dwmkerr/mongo-connection-string`), which means it'll handle input which is not URI encoded.
 
