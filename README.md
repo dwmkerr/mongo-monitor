@@ -63,6 +63,9 @@ Cleanup sample processes:
 make sample-shutdown
 ```
 
+## Developing
+
+Lint with `npm run lint`, test with `npm test`, release with `npm run release`.
 
 ## Tests
 
