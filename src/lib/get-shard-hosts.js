@@ -3,6 +3,7 @@ function getShardHostDetails(host) {
   //  a replicaset.
   if (host.indexOf('/') === -1) {
     return {
+      connectionString: `mongodb://${host}`,
       replicaSet: null,
       hosts: [ host ] // single host only.
     };
@@ -15,6 +16,7 @@ function getShardHostDetails(host) {
   const hosts = allHosts.split(',');
 
   return {
+    connectionString: `mongodb://${allHosts}?replicaSet=${replicaSet}`,
     replicaSet,
     hosts
   };

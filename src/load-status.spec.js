@@ -6,7 +6,7 @@ const testReplsetIsMaster = require('../test/replset.isMaster.json');
 const testReplsetReplSetGetStatus = require('../test/replset.replSetGetStatus.json');
 const testShardIsMaster = require('../test/shard.isMaster.json');
 const testShardListShards = require('../test/shard.listShards.json');
-const testShardNodeIsMaster = require('../test/shard.node.isMaster.json');
+const testShardReplSetGetStatus = require('../test/shard.replSet.replSetGetStatus.json');
 
 const noop = () => {};
 
@@ -78,18 +78,10 @@ describe('load-status', () => {
       .callsFake(async () => { return testShardListShards; });
 
     //  Create the shard db functions.
-    const node1Db = stubDb('mongodb://mongod1.shard1.mongo-cluster.com:27017');
-    sandbox.stub(node1Db, 'command')
-      .withArgs({ isMaster: 1 })
-      .callsFake(async () => { return testShardNodeIsMaster; });
-    const node2Db = stubDb('mongodb://mongod2.shard1.mongo-cluster.com:27017');
-    sandbox.stub(node2Db, 'command')
-      .withArgs({ isMaster: 1 })
-      .callsFake(async () => { return testShardNodeIsMaster; });
-    const node3Db = stubDb('mongodb://mongod3.shard1.mongo-cluster.com:27017');
-    sandbox.stub(node3Db, 'command')
-      .withArgs({ isMaster: 1 })
-      .callsFake(async () => { return testShardNodeIsMaster; });
+    const node4Db = stubDb('mongodb://mongod1.shard1.mongo-cluster.com:27017,mongod2.shard1.mongo-cluster.com:27017,mongod3.shard1.mongo-cluster.com:27017?replicaSet=shard1rs');
+    sandbox.stub(node4Db, 'command')
+      .withArgs({ replSetGetStatus: 1 })
+      .callsFake(async () => { return testShardReplSetGetStatus; });
 
     //  Load the status.
     const status = await loadStatus(stubClient('localhost'));
@@ -102,7 +94,13 @@ describe('load-status', () => {
     expect(shard1.replicaSet).to.equal('shard1rs');
     expect(shard1.hosts.length).to.equal(3);
     const host1 = shard1.hosts[0];
-    expect(host1.status).to.equal('PRIMARY');
+    expect(host1.state).to.equal(1); // i.e. primary
     expect(host1.host).to.equal('mongod1.shard1.mongo-cluster.com:27017');
+    const host2 = shard1.hosts[1];
+    expect(host2.state).to.equal(2); // i.e. secondary
+    expect(host2.host).to.equal('mongod2.shard1.mongo-cluster.com:27017');
+    const host3 = shard1.hosts[2];
+    expect(host3.state).to.equal(2); // i.e. secondary
+    expect(host3.host).to.equal('mongod3.shard1.mongo-cluster.com:27017');
   });
 });
