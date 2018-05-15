@@ -1,12 +1,14 @@
 const { MongoClient } = require('mongodb');
 const getShardHosts = require('./lib/get-shard-hosts');
 
-async function getIsMaster(connectionString) {
+async function getReplicaSetStatus(connectionString) {
   const client = await MongoClient.connect(connectionString);
   const db = client.db('admin');
-  const isMaster = await db.command({ isMaster: 1 });
-  return isMaster;
+  const status = await loadReplicasetStatus({ db });
+  await client.close();
+  return status;
 }
+
 
 async function loadShardedStatus({ db }) {
   //  Get the balancer status and shards.
@@ -17,27 +19,26 @@ async function loadShardedStatus({ db }) {
   //  Go through each shard, getting status. This'll be async for each one.
   const promises = listShards.shards.map(async (shard) => {
     //  Get the shard id and hosts.
-    const { replicaSet, hosts } = getShardHosts(shard.host);
+    const { connectionString, replicaSet, hosts } = getShardHosts(shard.host);
+
+    //  If there is no set name, we're standalone.
+    if (!replicaSet) {
+      return {
+        id: shard._id,
+        replicaSet,
+        hosts: hosts.map(host => ({ status: '(standalone)', host }))
+      };
+    }
 
     //  Try and get the details of the replicaset which make up the shard.
     try {
-      const isMaster = await getIsMaster(`mongodb://${hosts[0]}`);
-      const primary = isMaster.primary;
-
-      //  If there is no set name, we're standalone.
-      if (isMaster.setName === undefined) {
-        return {
-          id: shard._id,
-          replicaSet,
-          hosts: hosts.map(host => ({ status: '(standalone)', host }))
-        };
-      }
+      const rsStatus = await getReplicaSetStatus(connectionString);
 
       //  Otherwise, work out the status.
-      const shardHosts = isMaster.hosts.map((host) => {
-        return {
-          status: (host === primary ? 'PRIMARY' : 'SECONDARY'),
-          host
+      const shardHosts = rsStatus.members.map((host) => {
+      return {
+          state: host.state,
+          host: host.name
         };
       });
 
@@ -45,7 +46,7 @@ async function loadShardedStatus({ db }) {
     } catch (err) {
       const shardHosts = hosts.map((host) => {
         return {
-          status: 'UNKNOWN',
+          state: -1,
           host
         };
       });

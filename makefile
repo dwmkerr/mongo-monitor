@@ -8,5 +8,5 @@ sample-shard:
 	cd ./samples/shard && ./shard.sh
 
 sample-shutdown:
-	ps -ax | grep mongod | awk '{print $$1}' | xargs kill
-	ps -ax | grep mongos | awk '{print $$1}' | xargs kill
+	pgrep -ax mongod | awk '{print $$1}' | xargs kill
+	pgrep -ax mongos | awk '{print $$1}' | xargs kill

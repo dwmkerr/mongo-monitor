@@ -50,7 +50,7 @@ async function checkStatus(params) {
       status.shards.forEach((shard) => {
         console.log(`\n  Shard: ${chalk.white(shard.id)}\n`);
         shard.hosts.forEach((host) => {
-          console.log(`    ${state.writeStatusNameRightAligned(host.status)} : ${chalk.white(host.host)}`);
+          console.log(`    ${state.writeStatusNameRightAligned(state.getStatusName(host.state))} : ${chalk.white(host.host)}`);
         });
       });
     }
