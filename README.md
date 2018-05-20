@@ -76,3 +76,7 @@ The following files are useful for testing:
 | `shard.isMaster.json` | The output of `isMaster` for a `mongos` member of a sharded cluster. | 
 | `shard.listShards.json` | The output of `listShards` for a `mongos` member of a sharded cluster. | 
 | `shard.node.isMaster.json` | The output of `isMaster` for a `mongod` member of a sharded cluster. | 
+
+## Notes
+
+There's also a little blog post on this here: [dwmkerr.com/mongo-monitor-cli/](https://www.dwmkerr.com/mongo-monitor-cli/).
