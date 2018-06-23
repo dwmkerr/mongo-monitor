@@ -15,7 +15,7 @@ The connection string is handled with [`mongo-connection-string`](https://github
 Install with:
 
 ```bash
-npm install mongo-monitor-cli
+npm install mongo-monitor
 ```
 
 ## Usage

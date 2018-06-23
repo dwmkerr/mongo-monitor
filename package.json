@@ -1,5 +1,5 @@
 {
-  "name": "mongo-monitor-cli",
+  "name": "mongo-monitor",
   "version": "0.3.0",
   "description": "MongoDB Cluster Monitor",
   "main": "monitor.js",
