@@ -1,6 +1,6 @@
 # mongo-monitor
 
-[![CircleCI](https://circleci.com/gh/dwmkerr/mongo-monitor.svg?style=shield)](https://circleci.com/gh/dwmkerr/mongo-monitor) [![codecov](https://codecov.io/gh/dwmkerr/mongo-monitor/branch/master/graph/badge.svg)](https://codecov.io/gh/dwmkerr/mongo-monitor) [![Greenkeeper badge](https://badges.greenkeeper.io/dwmkerr/mongo-monitor.svg)](https://greenkeeper.io/)
+[![CircleCI](https://circleci.com/gh/dwmkerr/mongo-monitor.svg?style=shield)](https://circleci.com/gh/dwmkerr/mongo-monitor) [![codecov](https://codecov.io/gh/dwmkerr/mongo-monitor/branch/master/graph/badge.svg)](https://codecov.io/gh/dwmkerr/mongo-monitor) [![Greenkeeper badge](https://badges.greenkeeper.io/dwmkerr/mongo-monitor.svg)](https://greenkeeper.io/) [![GuardRails badge](https://badges.production.guardrails.io/dwmkerr/mongo-monitor.svg)](https://www.guardrails.io)
 
 Simple CLI to monitor the status of a MongoDB cluster.
 
