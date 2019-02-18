@@ -39,7 +39,7 @@
     "mocha-junit-reporter": "^1.17.0",
     "nock": "^10.0.0",
     "nyc": "^12.0.1",
-    "sinon": "^6.0.0",
+    "sinon": "^7.2.4",
     "standard-version": "^4.3.0"
   }
 }
