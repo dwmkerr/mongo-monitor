@@ -40,6 +40,6 @@
     "nock": "^10.0.0",
     "nyc": "^14.1.0",
     "sinon": "^7.2.4",
-    "standard-version": "^4.3.0"
+    "standard-version": "^6.0.1"
   }
 }
