@@ -34,7 +34,7 @@
     "mongodb": "^3.0.8"
   },
   "devDependencies": {
-    "eslint": "^5.0.0",
+    "eslint": "^6.0.0",
     "mocha": "^6.0.0",
     "mocha-junit-reporter": "^1.17.0",
     "nock": "^10.0.0",
