@@ -20,9 +20,9 @@ mkdir -p ./data/data4
 mkdir -p ./log
 
 # Start the replicaset processes.
-mongod --fork --logpath ./log/node1.log --smallfiles --oplogSize 50 --port ${port1} --dbpath ./data/data1 --replSet cluster
-mongod --fork --logpath ./log/node2.log --smallfiles --oplogSize 50 --port ${port2} --dbpath ./data/data2 --replSet cluster
-mongod --fork --logpath ./log/node3.log --smallfiles --oplogSize 50 --port ${port3} --dbpath ./data/data3 --replSet cluster
+mongod --fork --logpath ./log/node1.log  --oplogSize 50 --port ${port1} --dbpath ./data/data1 --replSet cluster
+mongod --fork --logpath ./log/node2.log  --oplogSize 50 --port ${port2} --dbpath ./data/data2 --replSet cluster
+mongod --fork --logpath ./log/node3.log  --oplogSize 50 --port ${port3} --dbpath ./data/data3 --replSet cluster
 mongod --fork --logpath ./log/node4.log --smallfiles --oplogSize 50 --port ${port4} --dbpath ./data/data4 --replSet cluster
 
 # Wait a bit of time for the process to start.

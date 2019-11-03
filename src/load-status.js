@@ -42,7 +42,12 @@ async function loadShardedStatus({ db }) {
         };
       });
 
-      return { id: shard._id, replicaSet, hosts: shardHosts };
+      return {
+        id: shard._id,
+        connections: rsStatus.connections,
+        replicaSet,
+        hosts: shardHosts
+      };
     } catch (err) {
       const shardHosts = hosts.map((host) => {
         return {
@@ -65,18 +70,22 @@ async function loadShardedStatus({ db }) {
 }
 
 async function loadReplicasetStatus({ db }) {
-  const status = await db.command({ replSetGetStatus: 1 });
+  const replSetStatus = await db.command({ replSetGetStatus: 1 });
+  const serverStatus = await db.command({ serverStatus: 1} );
 
   return {
     configuration: 'replicaset',
-    replsetName: status.set,
-    members: status.members.map(({ state, name }) => { return { state, name }; })
+    connections: serverStatus.connections,
+    replsetName: replSetStatus.set,
+    members: replSetStatus.members.map(({ state, name }) => { return { state, name }; })
   };
 }
 
-async function loadStandaloneStatus() {
+async function loadStandaloneStatus({ db }) {
+  const serverStatus = await db.command({ serverStatus: 1} );
   return {
-    configuration: 'standalone'
+    configuration: 'standalone',
+    connections: serverStatus.connections
   };
 }
 

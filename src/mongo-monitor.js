@@ -45,10 +45,15 @@ async function checkStatus(params) {
     console.log(`Connection    : ${chalk.white(connectionString)}`);
     console.log(`Configuration : ${chalk.white(status.configuration)}`);
 
+    //  If we are standalone, write the number of connections.
+    if (status.configuration === 'standalone') {
+      console.log(`Connections   : ${chalk.white(status.connections.current)}/${chalk.white(status.connections.available)}`);
+    }
+
     //  If we are sharded, write each shard.
     if (status.configuration === 'sharded') {
       status.shards.forEach((shard) => {
-        console.log(`\n  Shard: ${chalk.white(shard.id)}\n`);
+        console.log(`\n  Shard: ${chalk.white(shard.id)}    (${chalk.white(shard.connections.current)}/${chalk.white(shard.connections.available)} connnections)\n`);
         shard.hosts.forEach((host) => {
           console.log(`    ${state.writeStatusNameRightAligned(state.getStatusName(host.state))} : ${chalk.white(host.host)}`);
         });
@@ -57,7 +62,7 @@ async function checkStatus(params) {
 
     //  If we are a replicaset, write each member.
     if (status.configuration === 'replicaset') {
-      console.log(`\n  Replicaset: ${chalk.white(status.replsetName)}\n`);
+      console.log(`\n  Replicaset: ${chalk.white(status.replsetName)}    (${chalk.white(status.connections.current)}/${chalk.white(status.connections.available)} connnections)\n`);
       status.members.forEach((m) => {
         console.log(`    ${state.writeStatusNameRightAligned(state.getStatusName(m.state))} : ${chalk.white(m.name)}`);
       });
