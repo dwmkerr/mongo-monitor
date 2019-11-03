@@ -34,12 +34,12 @@
     "mongodb": "^3.0.8"
   },
   "devDependencies": {
-    "eslint": "^5.0.0",
-    "mocha": "^6.0.0",
+    "eslint": "^6.6.0",
+    "mocha": "^6.2.2",
     "mocha-junit-reporter": "^1.17.0",
     "nock": "^11.1.0",
-    "nyc": "^14.1.0",
-    "sinon": "^7.2.4",
+    "nyc": "^14.1.1",
+    "sinon": "^7.5.0",
     "standard-version": "^7.0.0"
   }
 }
