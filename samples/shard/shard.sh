@@ -23,9 +23,9 @@ mkdir -p ./data/datars3c
 mkdir -p ./log
 
 # Start the config servers.
-mongod --fork --logpath ./log/cs1.log --smallfiles --oplogSize 50 --port 27117 --dbpath ./data/datacs1 --configsvr --replSet config
-mongod --fork --logpath ./log/cs2.log --smallfiles --oplogSize 50 --port 27118 --dbpath ./data/datacs2 --configsvr --replSet config
-mongod --fork --logpath ./log/cs3.log --smallfiles --oplogSize 50 --port 27119 --dbpath ./data/datacs3 --configsvr --replSet config
+mongod --fork --logpath ./log/cs1.log --oplogSize 50 --port 27117 --dbpath ./data/datacs1 --configsvr --replSet config
+mongod --fork --logpath ./log/cs2.log --oplogSize 50 --port 27118 --dbpath ./data/datacs2 --configsvr --replSet config
+mongod --fork --logpath ./log/cs3.log --oplogSize 50 --port 27119 --dbpath ./data/datacs3 --configsvr --replSet config
 
 # Start the replicasets.
 mongod --fork --replSet rs1 --port 27217 --dbpath ./data/datars1a --logpath ./log/rs1a.log
