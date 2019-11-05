@@ -28,16 +28,16 @@ mongod --fork --logpath ./log/cs2.log --oplogSize 50 --port 27118 --dbpath ./dat
 mongod --fork --logpath ./log/cs3.log --oplogSize 50 --port 27119 --dbpath ./data/datacs3 --configsvr --replSet config
 
 # Start the replicasets.
-mongod --fork --replSet rs1 --port 27217 --dbpath ./data/datars1a --logpath ./log/rs1a.log
-mongod --fork --replSet rs1 --port 27218 --dbpath ./data/datars1b --logpath ./log/rs1b.log
-mongod --fork --replSet rs1 --port 27219 --dbpath ./data/datars1c --logpath ./log/rs1c.log
-mongod --fork --replSet rs1 --port 27220 --dbpath ./data/datars1d --logpath ./log/rs1d.log
-mongod --fork --replSet rs2 --port 27317 --dbpath ./data/datars2a --logpath ./log/rs2a.log
-mongod --fork --replSet rs2 --port 27318 --dbpath ./data/datars2b --logpath ./log/rs2b.log
-mongod --fork --replSet rs2 --port 27319 --dbpath ./data/datars2c --logpath ./log/rs2c.log
-mongod --fork --replSet rs3 --port 27417 --dbpath ./data/datars3a --logpath ./log/rs3a.log
-mongod --fork --replSet rs3 --port 27418 --dbpath ./data/datars3b --logpath ./log/rs3b.log
-mongod --fork --replSet rs3 --port 27419 --dbpath ./data/datars3c --logpath ./log/rs3c.log
+mongod --fork --replSet rs1 --port 27217 --dbpath ./data/datars1a --logpath ./log/rs1a.log --shardsvr 
+mongod --fork --replSet rs1 --port 27218 --dbpath ./data/datars1b --logpath ./log/rs1b.log --shardsvr 
+mongod --fork --replSet rs1 --port 27219 --dbpath ./data/datars1c --logpath ./log/rs1c.log --shardsvr 
+mongod --fork --replSet rs1 --port 27220 --dbpath ./data/datars1d --logpath ./log/rs1d.log --shardsvr 
+mongod --fork --replSet rs2 --port 27317 --dbpath ./data/datars2a --logpath ./log/rs2a.log --shardsvr 
+mongod --fork --replSet rs2 --port 27318 --dbpath ./data/datars2b --logpath ./log/rs2b.log --shardsvr 
+mongod --fork --replSet rs2 --port 27319 --dbpath ./data/datars2c --logpath ./log/rs2c.log --shardsvr 
+mongod --fork --replSet rs3 --port 27417 --dbpath ./data/datars3a --logpath ./log/rs3a.log --shardsvr 
+mongod --fork --replSet rs3 --port 27418 --dbpath ./data/datars3b --logpath ./log/rs3b.log --shardsvr 
+mongod --fork --replSet rs3 --port 27419 --dbpath ./data/datars3c --logpath ./log/rs3c.log --shardsvr 
 
 # Wait a bit of time for the process to start.
 sleep 3
