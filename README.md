@@ -74,8 +74,14 @@ The following files are useful for testing:
 | File | Notes |
 |------|-------|
 | `shard.isMaster.json` | The output of `isMaster` for a `mongos` member of a sharded cluster. | 
-| `shard.listShards.json` | The output of `listShards` for a `mongos` member of a sharded cluster. | 
 | `shard.node.isMaster.json` | The output of `isMaster` for a `mongod` member of a sharded cluster. | 
+| `shard.listShards.json` | The output of `listShards` for a `mongos` member of a sharded cluster. | 
+| `shard.replset.replSetGetStatus.json` | The output of `replSetGetStatus` for a replicaset in a sharded cluster. |
+| `replset.isMaster.json` | The output of `isMaster` for a replicaset. |
+| `replset.replSetGetStatus.json` | The output of `replSetGetStatus` for a replicaset. |
+| `replset.serverStatus.json` | The output of `serverStatus` for a replicaset. |
+| `standalone.isMaster.json` | The output of `isMaster` for a standalone server. |
+| `standalone.serverStatus.json` | The output of `serverStatus` for a standalone server. |
 
 ## Troubleshooting
 
