@@ -1,6 +1,13 @@
-# Change Log
+# Changelog
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
+
+## [1.1.0](https://github.com/dwmkerr/mongo-monitor/compare/v1.0.0...v1.1.0) (2019-11-05)
+
+
+### Features
+
+* show connection statistics ([279fc43](https://github.com/dwmkerr/mongo-monitor/commit/279fc4397a872a001ae3e15a6ae6cea354c7fd58))
 
 <a name="1.0.0"></a>
 # [1.0.0](https://github.com/dwmkerr/mongo-monitor/compare/v0.3.0...v1.0.0) (2018-06-23)
