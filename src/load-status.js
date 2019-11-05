@@ -9,7 +9,6 @@ async function getReplicaSetStatus(connectionString) {
   return status;
 }
 
-
 async function loadShardedStatus({ db }) {
   //  Get the balancer status and shards.
   //  const balancerStatus = await db.command({ balancerStatus: 1 });

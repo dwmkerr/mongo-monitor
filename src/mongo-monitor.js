@@ -3,6 +3,7 @@ const chalk = require('chalk');
 const loadStatus = require('./load-status');
 const state = require('./lib/status');
 const eventHandlers = require('./lib/event-handlers');
+const printConnections = require('./lib/print-connections');
 
 //  Keep track of interesting events.
 const events = [];
@@ -47,13 +48,13 @@ async function checkStatus(params) {
 
     //  If we are standalone, write the number of connections.
     if (status.configuration === 'standalone') {
-      console.log(`Connections   : ${chalk.white(status.connections.current)}/${chalk.white(status.connections.available)}`);
+      console.log(`Connections   : ${printConnections(status.connections.current, status.connections.available)}`);
     }
 
     //  If we are sharded, write each shard.
     if (status.configuration === 'sharded') {
       status.shards.forEach((shard) => {
-        console.log(`\n  Shard: ${chalk.white(shard.id)}    (${chalk.white(shard.connections.current)}/${chalk.white(shard.connections.available)} connnections)\n`);
+        console.log(`\n  Shard: ${chalk.white(shard.id)}    (${printConnections(shard.connections.current, shard.connections.available)} connections)\n`);
         shard.hosts.forEach((host) => {
           console.log(`    ${state.writeStatusNameRightAligned(state.getStatusName(host.state))} : ${chalk.white(host.host)}`);
         });
@@ -62,7 +63,7 @@ async function checkStatus(params) {
 
     //  If we are a replicaset, write each member.
     if (status.configuration === 'replicaset') {
-      console.log(`\n  Replicaset: ${chalk.white(status.replsetName)}    (${chalk.white(status.connections.current)}/${chalk.white(status.connections.available)} connnections)\n`);
+      console.log(`\n  Replicaset: ${chalk.white(status.replsetName)}    (${printConnections(status.connections.current, status.connections.available)} connections)\n`);
       status.members.forEach((m) => {
         console.log(`    ${state.writeStatusNameRightAligned(state.getStatusName(m.state))} : ${chalk.white(m.name)}`);
       });
