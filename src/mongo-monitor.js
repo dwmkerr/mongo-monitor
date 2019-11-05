@@ -29,6 +29,11 @@ async function checkStatus(params) {
     //  If we don't yet have a client, try and create one. Connection issues
     //  might cause this to fail.
     if (client === null) {
+      //  Note that client *might* have been initialised by the time we hit this
+      //  line, so linting warns us correctly it might already have a value.
+      //  However, overriding the client is fine; it will simply be disposed
+      //  on the next GC cycle.
+      //  eslint-disable-next-line require-atomic-updates
       client = await MongoClient.connect(connectionString.toURI());
 
       Object.keys(eventHandlers).forEach((eventName) => {
