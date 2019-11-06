@@ -3,6 +3,7 @@ const chalk = require('chalk');
 const loadStatus = require('./load-status');
 const state = require('./lib/status');
 const eventHandlers = require('./lib/event-handlers');
+const printConnections = require('./lib/print-connections');
 
 //  Keep track of interesting events.
 const events = [];
@@ -29,6 +30,11 @@ async function checkStatus(params) {
     //  If we don't yet have a client, try and create one. Connection issues
     //  might cause this to fail.
     if (client === null) {
+      //  Note that client *might* have been initialised by the time we hit this
+      //  line, so linting warns us correctly it might already have a value.
+      //  However, overriding the client is fine; it will simply be disposed
+      //  on the next GC cycle.
+      //  eslint-disable-next-line require-atomic-updates
       client = await MongoClient.connect(connectionString.toURI());
 
       Object.keys(eventHandlers).forEach((eventName) => {
@@ -45,10 +51,15 @@ async function checkStatus(params) {
     console.log(`Connection    : ${chalk.white(connectionString)}`);
     console.log(`Configuration : ${chalk.white(status.configuration)}`);
 
+    //  If we are standalone, write the number of connections.
+    if (status.configuration === 'standalone') {
+      console.log(`Connections   : ${printConnections(status.connections.current, status.connections.available)}`);
+    }
+
     //  If we are sharded, write each shard.
     if (status.configuration === 'sharded') {
       status.shards.forEach((shard) => {
-        console.log(`\n  Shard: ${chalk.white(shard.id)}\n`);
+        console.log(`\n  Shard: ${chalk.white(shard.id)}    (${printConnections(shard.connections.current, shard.connections.available)} connections)\n`);
         shard.hosts.forEach((host) => {
           console.log(`    ${state.writeStatusNameRightAligned(state.getStatusName(host.state))} : ${chalk.white(host.host)}`);
         });
@@ -57,7 +68,7 @@ async function checkStatus(params) {
 
     //  If we are a replicaset, write each member.
     if (status.configuration === 'replicaset') {
-      console.log(`\n  Replicaset: ${chalk.white(status.replsetName)}\n`);
+      console.log(`\n  Replicaset: ${chalk.white(status.replsetName)}    (${printConnections(status.connections.current, status.connections.available)} connections)\n`);
       status.members.forEach((m) => {
         console.log(`    ${state.writeStatusNameRightAligned(state.getStatusName(m.state))} : ${chalk.white(m.name)}`);
       });

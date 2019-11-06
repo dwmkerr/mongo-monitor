@@ -1,6 +1,6 @@
 # mongo-monitor
 
-[![CircleCI](https://circleci.com/gh/dwmkerr/mongo-monitor.svg?style=shield)](https://circleci.com/gh/dwmkerr/mongo-monitor) [![codecov](https://codecov.io/gh/dwmkerr/mongo-monitor/branch/master/graph/badge.svg)](https://codecov.io/gh/dwmkerr/mongo-monitor) [![Greenkeeper badge](https://badges.greenkeeper.io/dwmkerr/mongo-monitor.svg)](https://greenkeeper.io/)
+[![CircleCI](https://circleci.com/gh/dwmkerr/mongo-monitor.svg?style=shield)](https://circleci.com/gh/dwmkerr/mongo-monitor) [![codecov](https://codecov.io/gh/dwmkerr/mongo-monitor/branch/master/graph/badge.svg)](https://codecov.io/gh/dwmkerr/mongo-monitor) [![Greenkeeper badge](https://badges.greenkeeper.io/dwmkerr/mongo-monitor.svg)](https://greenkeeper.io/) [![GuardRails badge](https://badges.guardrails.io/dwmkerr/mongo-monitor.svg?token=569f2cc38a148f785f3a38ef0bcf5f5964995d7ca625abfad9956b14bd06ad96&provider=github)](https://dashboard.guardrails.io/default/gh/dwmkerr/mongo-monitor)
 
 Simple CLI to monitor the status of a MongoDB cluster.
 
@@ -74,8 +74,14 @@ The following files are useful for testing:
 | File | Notes |
 |------|-------|
 | `shard.isMaster.json` | The output of `isMaster` for a `mongos` member of a sharded cluster. | 
-| `shard.listShards.json` | The output of `listShards` for a `mongos` member of a sharded cluster. | 
 | `shard.node.isMaster.json` | The output of `isMaster` for a `mongod` member of a sharded cluster. | 
+| `shard.listShards.json` | The output of `listShards` for a `mongos` member of a sharded cluster. | 
+| `shard.replset.replSetGetStatus.json` | The output of `replSetGetStatus` for a replicaset in a sharded cluster. |
+| `replset.isMaster.json` | The output of `isMaster` for a replicaset. |
+| `replset.replSetGetStatus.json` | The output of `replSetGetStatus` for a replicaset. |
+| `replset.serverStatus.json` | The output of `serverStatus` for a replicaset. |
+| `standalone.isMaster.json` | The output of `isMaster` for a standalone server. |
+| `standalone.serverStatus.json` | The output of `serverStatus` for a standalone server. |
 
 ## Troubleshooting
 

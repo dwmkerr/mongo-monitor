@@ -1,6 +1,6 @@
 {
   "name": "mongo-monitor",
-  "version": "1.0.0",
+  "version": "1.1.1",
   "description": "MongoDB Cluster Monitor",
   "main": "monitor.js",
   "engines": {
@@ -31,15 +31,15 @@
     "chalk": "^2.4.1",
     "commander": "^3.0.0",
     "mongo-connection-string": "^0.1.4",
-    "mongodb": "^3.0.8"
+    "mongodb": "^3.3.3"
   },
   "devDependencies": {
-    "eslint": "^5.0.0",
-    "mocha": "^6.0.0",
+    "eslint": "^6.6.0",
+    "mocha": "^6.2.2",
     "mocha-junit-reporter": "^1.17.0",
-    "nock": "^10.0.0",
-    "nyc": "^14.1.0",
-    "sinon": "^7.2.4",
+    "nock": "^11.1.0",
+    "nyc": "^14.1.1",
+    "sinon": "^7.5.0",
     "standard-version": "^7.0.0"
   }
 }
