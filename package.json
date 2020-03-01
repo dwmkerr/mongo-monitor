@@ -37,7 +37,7 @@
     "eslint": "^6.6.0",
     "mocha": "^7.0.1",
     "mocha-junit-reporter": "^1.17.0",
-    "nock": "^11.1.0",
+    "nock": "^12.0.2",
     "nyc": "^14.1.1",
     "sinon": "^8.0.0",
     "standard-version": "^7.0.0"
