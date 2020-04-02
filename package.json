@@ -28,7 +28,7 @@
     "url": "https://github.com/dwmkerr/mongo-monitor.git"
   },
   "dependencies": {
-    "chalk": "^2.4.1",
+    "chalk": "^4.0.0",
     "commander": "^3.0.0",
     "mongo-connection-string": "^0.1.4",
     "mongodb": "^3.3.3"
