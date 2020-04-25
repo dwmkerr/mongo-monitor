@@ -29,7 +29,7 @@
   },
   "dependencies": {
     "chalk": "^2.4.1",
-    "commander": "^3.0.0",
+    "commander": "^5.1.0",
     "mongo-connection-string": "^0.1.4",
     "mongodb": "^3.3.3"
   },
